@@ -1,7 +1,6 @@
 const Knex = require('knex');
 const connection = require('../knexfile').development;
 const { Model } = require('objection');
-const Author = require('./Author');
 
 Model.knex(Knex(connection));
 
@@ -11,6 +10,8 @@ class Book extends Model {
     }
 
     static get relationMappings() {
+        const Author = require('./Author');
+
         return {
             books: {
                 relation: Model.BelongsToOneRelation,
